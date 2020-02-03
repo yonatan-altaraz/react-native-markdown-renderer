@@ -37,7 +37,7 @@ const renderRules = {
 
   strong: (node, children, parent, styles, testID) => {
     return (
-      <Text key={node.key} style={styles.strong} testID = {testID}>
+      <Text key={node.key} style={styles.strong} testID={testID}>
         {children}
       </Text>
     );
@@ -45,7 +45,7 @@ const renderRules = {
 
   s: (node, children, parent, styles, testID) => {
     return (
-      <Text key={node.key} style={styles.strikethrough} testID = {testID}>
+      <Text key={node.key} style={styles.strikethrough} testID={testID}>
         {children}
       </Text>
     );
@@ -53,7 +53,7 @@ const renderRules = {
   // a
   link: (node, children, parent, styles, onLinkPress, testID) => {
     return (
-      <Text key={node.key} style={styles.link} onPress={() => openUrl(node.attributes.href, onLinkPress)} testID = {testID}>
+      <Text key={node.key} style={styles.link} onPress={() => openUrl(node.attributes.href, onLinkPress)} testID={testID}>
         {children}
       </Text>
     );
@@ -65,7 +65,7 @@ const renderRules = {
         key={node.key}
         onPress={() => openUrl(node.attributes.href, onLinkPress)}
         style={styles.blocklink}
-        testID = {testID}
+        testID={testID}
       >
         <View style={styles.image}>{children}</View>
       </TouchableWithoutFeedback>
