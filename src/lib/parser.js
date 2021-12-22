@@ -1,9 +1,10 @@
-import React from 'react';
-import { View } from 'react-native';
-import tokensToAST from './util/tokensToAST';
-import { stringToTokens } from './util/stringToTokens';
-import { cleanupTokens } from './util/cleanupTokens';
-import groupTextTokens from './util/groupTextTokens';
+import React from 'react'
+import { View } from 'react-native'
+import tokensToAST from './util/tokensToAST'
+import { stringToTokens } from './util/stringToTokens'
+import { cleanupTokens } from './util/cleanupTokens'
+import groupTextTokens from './util/groupTextTokens'
+import cleanRedundantSoftBreaks from './util/cleanRedundantSoftBreaks'
 
 /**
  *
@@ -13,11 +14,11 @@ import groupTextTokens from './util/groupTextTokens';
  * @return {View}
  */
 export default function parser(source, renderer, markdownIt) {
-  let tokens = stringToTokens(source, markdownIt);
-  tokens = cleanupTokens(tokens);
-  tokens = groupTextTokens(tokens);
+  let tokens = stringToTokens(source, markdownIt)
+  tokens = cleanupTokens(tokens)
+  tokens = groupTextTokens(tokens)
+  let astTree = tokensToAST(tokens)
+  astTree = cleanRedundantSoftBreaks(astTree)
 
-  const astTree = tokensToAST(tokens);
-
-  return renderer(astTree);
+  return renderer(astTree)
 }
